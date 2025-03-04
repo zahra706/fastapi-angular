@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Gestion des Étudiants</h2>
+
+    <div class="form-container">
+        <input type="text" [(ngModel)]="newStudent.name" placeholder="Nom">
+        <input type="number" [(ngModel)]="newStudent.age" placeholder="Âge">
+        <input type="text" [(ngModel)]="newStudent.grade" placeholder="Note">
+        <button (click)="addStudent()">Ajouter</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let student of students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.grade }}</td>
+            <td>
+                <button (click)="deleteStudent(student.id)">Supprimer</button>
+            </td>
+        </tr>
+    </table>
+</div>

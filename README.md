@@ -1,61 +1,100 @@
-# 🎓 Projet de Gestion des Étudiants
+# 🎓 Gestion Étudiants - Projet Fullstack
 
-Une application web complète pour gérer des étudiants, leurs formations et départements, développée avec **FastAPI** (backend) et **React + Vite** (frontend admin).
-
----
-
-## 🚀 Fonctionnalités
-
-- Ajout, modification et suppression des étudiants
-- Création de formations avec description
-- Gestion des départements
-- Interface d’inscription et de profil pour les étudiants
-- Interface admin pour gestion et statistiques
+Ce projet est une application web de gestion des étudiants, composée de trois parties : une interface d'administration (React), une interface pour les étudiants (Next.js), et un backend API (FastAPI + MySQL).
 
 ---
 
-## 📸 Captures d’écran
+## 🔍 Aperçu du projet
 
-### Interface d'ajout d'un étudiant
+### 🔐 Interface de Connexion (Admin)
+![Login Admin](./screenshots/login-admin.png)
 
-![Ajout étudiant](./screenshots/ajout-etudiant.png)
+### 👩‍🏫 Formulaire d’ajout d'étudiant
+![Ajout étudiant](./screenshots/add-etudiant.png)
 
-### Formations (interface admin)
-
-![Formations](./screenshots/formations.png)
-
-### Backend Swagger FastAPI
-
-![Swagger UI](./screenshots/swagger-ui.png)
+### 🎓 Liste des formations
+![Liste formations](./screenshots/formations-list.png)
 
 ---
 
-## 🧑‍💻 Technologies utilisées
+## 🔧 Technologies utilisées
 
-### Backend (FastAPI)
-- Python 3.10+
-- FastAPI
-- SQLAlchemy
-- MySQL
-- Pydantic
-- CORS
-
-### Frontend (Admin - React + Vite)
-- React 18+
-- Vite
-- Axios
-- React Router
-- CSS custom
+- **Frontend Admin** : React 17 + Vite
+- **Frontend Étudiant** : Next.js 14
+- **Backend** : FastAPI (Python 3.11)
+- **Base de données** : MySQL
+- **ORM** : SQLAlchemy
+- **Authentification** : JWT
+- **API Doc** : Swagger UI (automatique via FastAPI)
 
 ---
 
-## 📦 Installation
+## 📂 Arborescence
 
-### Backend
+```
+projet/
+├── frontend-admin/        # Admin - React
+├── frontend-etudiant/     # Etudiants - Next.js
+└── backend/               # API - FastAPI
+```
 
+---
+
+## 🚀 Installation du projet
+
+### 🫠 Backend (FastAPI)
 ```bash
 cd backend
-python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate sous Windows
+python -m venv env
+source env/bin/activate  # ou .\env\Scripts\activate sur Windows
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
+
+### 💻 Frontend Admin (React)
+```bash
+cd frontend-admin
+npm install
+npm run dev
+```
+
+### 👨‍🏫 Frontend Etudiant (Next.js)
+```bash
+cd frontend-etudiant
+npm install
+npm run dev
+```
+
+---
+
+## 🔗 Principales routes API
+
+- `GET /etudiants` → Liste des étudiants
+- `POST /etudiants` → Ajouter un étudiant
+- `GET /formations` → Liste des formations
+- `POST /formations` → Créer une formation
+- `GET /departements` → Liste des départements
+
+---
+
+## 📊 Fonctionnalités
+
+### 🛠 Admin (React)
+- Authentification JWT
+- CRUD étudiants
+- CRUD formations
+- Tableau de bord avec statistiques
+
+### 🎓 Étudiant (Next.js)
+- Inscription
+- Accès au profil
+- Liste des formations
+
+---
+
+## 👤 Auteur
+
+- [Zahra Chebbi DSI23](https://github.com/ton-github)
+
+N'oublie pas d'ajouter tes captures dans un dossier `/screenshots/` à la racine du projet !
+

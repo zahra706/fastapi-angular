@@ -1,72 +1,86 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from database import engine, Base, SessionLocal
+import models  # pour que Base ait accès aux classes
+from routers.etudiant import router as etudiant_router  # Assurez-vous que ce module existe
+from routers.formation import router as formation_router  # Utiliser "formation" en minuscule
+from routers.inscription import router as inscription_router  # Et inscription
+from routers.departement import router as departement_router  # Assurez-vous que ce module existe
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import List
-import uuid
+from schemas import EtudiantCreate 
+from models import Etudiant
+from models import Departement
+from pydantic import BaseModel  # Importez BaseModel depuis Pydantic
+
+
+
 
 app = FastAPI()
 
-# Add CORS middleware to the FastAPI app
+# Définir les CORS pour permettre l'accès à l'API depuis ton frontend (localhost:3000 pour React ou Vite)
 origins = [
-    "http://localhost:4200",  # Angular frontend URL
+    "http://localhost:3000",  # Port par défaut de React
+    "http://localhost:5173",  # Port par défaut de Vite
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows only requests from localhost:4200
+    allow_origins=origins,  # Assurez-vous que c’est bien le port de Vite ou React
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# Pydantic model for a student
-class Student(BaseModel):
-    id: str  # Utilisation de string UUID
-    name: str
-    age: int
-    grade: str
+# Créer toutes les tables si elles n'existent pas déjà
+Base.metadata.create_all(bind=engine)
 
-# Données fictives
-students = [
-    Student(id=str(uuid.uuid4()), name="Zahra", age=21, grade="A"),
-    Student(id=str(uuid.uuid4()), name="Bob", age=21, grade="B"),
-]
+# Fonction pour récupérer la session DB
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-# Get all students
-@app.get("/students", response_model=List[Student])
-def get_students():
-    return students
+@app.get("/")
+def read_root():
+    return {"message": "Bienvenue sur l’API TP Étudiants 🎓"}
 
-# Get a specific student by ID
-@app.get("/students/{student_id}", response_model=Student)
-def get_student(student_id: str):
-    for student in students:
-        if student.id == student_id:
-            return student
-    raise HTTPException(status_code=404, detail="Étudiant non trouvé")
+# Route pour obtenir les départements
 
-# Add a new student
-@app.post("/students", response_model=Student)
-def add_student(student: Student):
-    student.id = str(uuid.uuid4())  # Générer un ID unique
-    students.append(student)
-    return student
 
-# Update an existing student
-@app.put("/students/{student_id}", response_model=Student)
-def update_student(student_id: str, updated_student: Student):
-    for i, student in enumerate(students):
-        if student.id == student_id:
-            updated_student.id = student_id
-            students[i] = updated_student
-            return updated_student
-    raise HTTPException(status_code=404, detail="Étudiant non trouvé")
+# Route pour créer un étudiant
+@app.post("/etudiants/")
+def create_etudiant(etudiant: EtudiantCreate, db: Session = Depends(get_db)):
+    print("DEBUG Payload reçu:", etudiant)
 
-# Delete a student
-@app.delete("/students/{student_id}")
-def delete_student(student_id: str):
-    for i, student in enumerate(students):
-        if student.id == student_id:
-            del students[i]
-            return {"message": "Étudiant supprimé"}
-    raise HTTPException(status_code=404, detail="Étudiant non trouvé")
+    # Vérifie que le département existe
+    departement = db.query(Departement).filter(Departement.id == etudiant.departement_id).first()
+    if not departement:
+        raise HTTPException(status_code=400, detail="Département inexistant")
+
+    new_etudiant = Etudiant(
+        nom=etudiant.nom,
+        email=etudiant.email,
+        departement_id=etudiant.departement_id
+    )
+    db.add(new_etudiant)
+    db.commit()
+    db.refresh(new_etudiant)
+    return new_etudiant
+
+
+# Inclure les routes des autres modules (assurez-vous que ces fichiers existent)
+app.include_router(etudiant_router)
+app.include_router(formation_router)
+app.include_router(inscription_router)
+app.include_router(departement_router)
+class Formation(BaseModel):
+    nom: str
+    
+formations = []
+
+@app.post("/formations/")
+async def add_formation(formation: Formation):
+    formations.append(formation)
+    return {"message": "Formation ajoutée avec succès", "formation": formation}

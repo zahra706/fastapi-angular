@@ -105,7 +105,7 @@ npm run dev
 
 ## 👤 Auteur
 
-- [Zahra Chebbi DSI23](https://github.com/ton-github)
+- [Zahra Chebbi DSI23](https://github.com/zahra706)
 
 N'oublie pas d'ajouter tes captures dans un dossier `/screenshots/` à la racine du projet !
 

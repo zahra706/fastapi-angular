@@ -5,16 +5,29 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 ---
 
 ## 🔍 Aperçu du projet
-
-### 🔐 Interface de Connexion (Admin)
-![Login Admin](./screenshots/login-admin.png)
+### Dashboard statistique (Admin)
+![Dashboard Admin](./screenshots/Dashboard-admin.png)
 
 ### 👩‍🏫 Formulaire d’ajout d'étudiant
 ![Ajout étudiant](./screenshots/add-etudiant.png)
+### 👩‍🏫 Formulaire d’ajout de formations
+![Ajout formation](./screenshots/add-formation.png)
 
-### 🎓 Liste des formations
+### 🎓 Liste des formations(Admin)
 ![Liste formations](./screenshots/formations-list.png)
 
+
+### page d'acceuil (Etudiant)
+![acceuil](./screenshots/acceuil.png)
+
+### page d'inscription(Etudiant)
+![inscription](./screenshots/inscription.png)
+
+### page de profile(Etudiant)
+![profile](./screenshots/profile.png)
+
+### 🎓 Liste des formations(Etudiant)
+![Liste formations](./screenshots/formations-list.png)
 ---
 
 ## 🔧 Technologies utilisées
@@ -24,7 +37,6 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 - **Backend** : FastAPI (Python 3.11)
 - **Base de données** : MySQL
 - **ORM** : SQLAlchemy
-- **Authentification** : JWT
 - **API Doc** : Swagger UI (automatique via FastAPI)
 
 ---
@@ -33,8 +45,8 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 
 ```
 projet/
-├── frontend-admin/        # Admin - React
-├── frontend-etudiant/     # Etudiants - Next.js
+├── admin-front/        # Admin - React
+├── etudiant/     # Etudiants - Next.js
 └── backend/               # API - FastAPI
 ```
 
@@ -80,7 +92,6 @@ npm run dev
 ## 📊 Fonctionnalités
 
 ### 🛠 Admin (React)
-- Authentification JWT
 - CRUD étudiants
 - CRUD formations
 - Tableau de bord avec statistiques

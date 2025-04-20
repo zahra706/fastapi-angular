@@ -14,7 +14,7 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 ![Ajout formation](./captures/ajouterformation.PNG)
 
 ### 🎓 Liste des formations(Admin)
-![Liste formations](./captures/formationsliste1.PNG)
+![Liste formations](./captures/formationliste1.PNG)
 
 
 ### page d'acceuil (Etudiant)

@@ -6,26 +6,26 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 
 ## 🔍 Aperçu du projet
 ### Dashboard statistique (Admin)
-![Dashboard Admin](./captures/dashboard.png)
+![Dashboard Admin](./captures/dashboard.PNG)
 
 ### 👩‍🏫 Formulaire d’ajout d'étudiant
-![Ajout étudiant](./captures/ajouteretudiant.png)
+![Ajout étudiant](./captures/ajouteretudiant.PNG)
 ### 👩‍🏫 Formulaire d’ajout de formations
-![Ajout formation](./captures/ajouterformation.png)
+![Ajout formation](./captures/ajouterformation.PNG)
 
 ### 🎓 Liste des formations(Admin)
-![Liste formations](./captures/formationsliste1.png)
+![Liste formations](./captures/formationsliste1.PNG)
 
 
 ### page d'acceuil (Etudiant)
-![acceuil](./captures/acceuil.png)
+![acceuil](./captures/acceuil.PNG)
 
 ### page d'inscription(Etudiant)
-![inscription](./captures/inscription.png)
+![inscription](./captures/inscription.PNG)
 
 ### page de profile(Etudiant)
-![profile](./captures/profile1.png)
-![profile](./captures/profile2.png)
+![profile](./captures/profile1.PNG)
+![profile](./captures/profile2.PNG)
 
 ### 🎓 Liste des formations(Etudiant)
 ![Liste formations](./captures/formationsliste2.png)

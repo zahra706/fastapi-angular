@@ -6,28 +6,29 @@ Ce projet est une application web de gestion des étudiants, composée de trois 
 
 ## 🔍 Aperçu du projet
 ### Dashboard statistique (Admin)
-![Dashboard Admin](./screenshots/Dashboard-admin.png)
+![Dashboard Admin](./captures/dashboard.png)
 
 ### 👩‍🏫 Formulaire d’ajout d'étudiant
-![Ajout étudiant](./screenshots/add-etudiant.png)
+![Ajout étudiant](./captures/ajouteretudiant.png)
 ### 👩‍🏫 Formulaire d’ajout de formations
-![Ajout formation](./screenshots/add-formation.png)
+![Ajout formation](./captures/ajouterformation.png)
 
 ### 🎓 Liste des formations(Admin)
-![Liste formations](./screenshots/formations-list.png)
+![Liste formations](./captures/formationsliste1.png)
 
 
 ### page d'acceuil (Etudiant)
-![acceuil](./screenshots/acceuil.png)
+![acceuil](./captures/acceuil.png)
 
 ### page d'inscription(Etudiant)
-![inscription](./screenshots/inscription.png)
+![inscription](./captures/inscription.png)
 
 ### page de profile(Etudiant)
-![profile](./screenshots/profile.png)
+![profile](./captures/profile1.png)
+![profile](./captures/profile2.png)
 
 ### 🎓 Liste des formations(Etudiant)
-![Liste formations](./screenshots/formations-list.png)
+![Liste formations](./captures/formationsliste2.png)
 ---
 
 ## 🔧 Technologies utilisées
@@ -107,5 +108,5 @@ npm run dev
 
 - [Zahra Chebbi DSI23](https://github.com/zahra706)
 
-N'oublie pas d'ajouter tes captures dans un dossier `/screenshots/` à la racine du projet !
+
 
